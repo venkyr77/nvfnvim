@@ -1,6 +1,13 @@
 {
   config.vim = {
-    binds.whichKey.enable = true;
+    binds.whichKey = {
+      enable = true;
+      register = {
+        "<leader>d" = "+[D]iagnostics";
+        "<leader>g" = "+[G]o to(LSP)";
+        "<leader>h" = "[H]unk(Gitsigns)";
+      };
+    };
 
     mini.indentscope.enable = true;
 

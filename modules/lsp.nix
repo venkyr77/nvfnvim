@@ -59,6 +59,17 @@
       };
     };
 
-    lsp.trouble.enable = true;
+    lsp = {
+      mappings = {
+        goToDeclaration = "<leader>gD";
+        goToDefinition = "<leader>gd";
+        goToType = "<leader>gt";
+        listImplementations = "<leader>gi";
+        listReferences = "<leader>gr";
+        nextDiagnostic = "<leader>dn";
+        previousDiagnostic = "<leader>dp";
+      };
+      trouble.enable = true;
+    };
   };
 }
