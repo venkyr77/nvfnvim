@@ -31,7 +31,7 @@
 
       nix = {
         enable = true;
-        extraDiagnostics.enable = false;
+        extraDiagnostics.enable = true;
         format = {
           enable = true;
           package = pkgs.nixfmt-rfc-style;

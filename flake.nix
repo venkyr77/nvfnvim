@@ -34,15 +34,14 @@
           ];
         }).neovim;
 
-      packages =
-        systems
-        |> map (system: {
+      packages = builtins.listToAttrs (
+        map (system: {
           name = system;
           value = {
             default = makeNeovim { inherit system; };
           };
-        })
-        |> builtins.listToAttrs;
+        }) systems
+      );
     in
     {
       inherit packages;

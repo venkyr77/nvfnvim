@@ -6,7 +6,7 @@ configuration in Nix using [nvf](https://github.com/NotAShelf/nvf)
 ## Run using `nix run`
 
 ```sh
-nix run --extra-experimental-features nix-command --extra-experimental-features flakes --extra-experimental-features pipe-operators github:venkyr77/nvfnvim
+nix run --extra-experimental-features nix-command --extra-experimental-features flakes github:venkyr77/nvfnvim
 ```
 
 ## Run as a standalone flake
@@ -32,15 +32,14 @@ A simple standalone flake that makes this package as default
         "aarch64-darwin"
       ];
 
-      packages =
-        systems
-        |> map (system: {
+      packages = builtins.listToAttrs (
+        map (system: {
           name = system;
           value = {
-            default = nvfnvim.packages.${system}.default;
+            inherit (nvfnvim.packages.${system}) default;
           };
-        })
-        |> builtins.listToAttrs;
+        }) systems
+      );
     in
     {
       inherit packages;
@@ -51,5 +50,5 @@ A simple standalone flake that makes this package as default
 and then run using `nix run` by,
 
 ```sh
-nix run --extra-experimental-features nix-command --extra-experimental-features flakes --extra-experimental-features pipe-operators .
+nix run --extra-experimental-features nix-command --extra-experimental-features flakes .
 ```
