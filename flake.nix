@@ -29,6 +29,7 @@
               ./modules/options.nix
               ./modules/editor
               ./modules/keymaps
+              ./modules/autocmds.nix
               ./modules/ui.nix
               ./modules/lsp.nix
               ./modules/completion.nix

@@ -26,7 +26,14 @@
     ui = {
       borders.plugins.which-key.enable = true;
 
-      illuminate.enable = true;
+      illuminate = {
+        enable = true;
+        setupOpts.filetypes_denylist = [
+          "help"
+          "neo-tree"
+          "notify"
+        ];
+      };
 
       noice = {
         enable = true;
