@@ -57,15 +57,21 @@
 
     lsp = {
       mappings = {
-        goToDeclaration = "<leader>gD";
-        goToDefinition = "<leader>gd";
-        goToType = "<leader>gt";
-        listImplementations = "<leader>gi";
-        listReferences = "<leader>gr";
+        goToDeclaration = null;
+        goToDefinition = null;
+        goToType = null;
+        listImplementations = null;
+        listReferences = null;
         nextDiagnostic = "<leader>dn";
         previousDiagnostic = "<leader>dp";
       };
-      trouble.enable = true;
+      lspsaga = {
+        enable = true;
+        setupOpts.finder.keys = {
+          quit = ["q" "<Esc>"];
+          toggle_or_open = ["o" "<CR>"];
+        };
+      };
     };
   };
 }
