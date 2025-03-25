@@ -4,7 +4,7 @@
     setup =
       # lua
       ''
-        require('smartyank').setup({osc52 = {ssh_only = false}})
+        require("smartyank").setup({ osc52 = { ssh_only = false } })
       '';
   };
 }
