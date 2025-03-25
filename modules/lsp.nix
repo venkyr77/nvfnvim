@@ -56,6 +56,7 @@
     };
 
     lsp = {
+      lspkind.enable = true;
       lspsaga.enable = true;
     };
   };
