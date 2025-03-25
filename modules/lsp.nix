@@ -57,7 +57,10 @@
 
     lsp = {
       lspkind.enable = true;
-      lspsaga.enable = true;
+      lspsaga = {
+        enable = true;
+        setupOpts.finder.methods.tyd = "textDocument/typeDefinition";
+      };
     };
   };
 }
