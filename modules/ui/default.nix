@@ -10,9 +10,7 @@
     notes.todo-comments.enable = true;
     notify.nvim-notify.enable = true;
     statusline.lualine.enable = true;
-    ui = {
-      borders.plugins.which-key.enable = true;
-    };
+    ui.borders.enable = true;
     visuals = {
       indent-blankline.enable = true;
       rainbow-delimiters.enable = true;
