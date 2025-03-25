@@ -36,6 +36,7 @@
         listReferences = null;
         nextDiagnostic = "<leader>dn";
         previousDiagnostic = "<leader>dp";
+        toggleFormatOnSave = null;
       };
       lspsaga.setupOpts.finder.keys = {
         quit = ["q" "<Esc>"];
