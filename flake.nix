@@ -26,14 +26,14 @@
           (nvf.lib.neovimConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
             modules = [
-              ./modules/options.nix
+              ./modules/autocmds
+              ./modules/completion
               ./modules/editor
               ./modules/format
               ./modules/keymaps
-              ./modules/autocmds.nix
-              ./modules/ui.nix
-              ./modules/lsp.nix
-              ./modules/completion.nix
+              ./modules/lsp
+              ./modules/options
+              ./modules/ui
             ];
           })
           .neovim;
