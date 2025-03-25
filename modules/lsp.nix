@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   config.vim = {
     languages = {
       bash = {
@@ -32,11 +31,7 @@
       nix = {
         enable = true;
         extraDiagnostics.enable = true;
-        format = {
-          enable = true;
-          package = pkgs.nixfmt-rfc-style;
-          type = "nixfmt";
-        };
+        format.enable = true;
         lsp = {
           enable = true;
           server = "nixd";
