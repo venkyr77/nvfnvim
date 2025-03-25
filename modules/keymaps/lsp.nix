@@ -28,6 +28,7 @@
     ];
     lsp = {
       mappings = {
+        format = null;
         goToDeclaration = null;
         goToDefinition = null;
         goToType = null;

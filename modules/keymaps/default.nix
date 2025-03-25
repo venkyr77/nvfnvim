@@ -1,6 +1,7 @@
 {
   imports = [
     ./completion.nix
+    ./conform.nix
     ./gitsigns.nix
     ./lsp.nix
     ./neotree.nix
@@ -10,6 +11,7 @@
     binds.whichKey = {
       enable = true;
       register = {
+        "<leader>c" = "conform (format)";
         "<leader>d" = "+[D]iagnostics";
         "<leader>g" = "+[G]o to(LSP)";
         "<leader>h" = "[H]unk(Gitsigns)";

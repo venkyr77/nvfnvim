@@ -28,6 +28,7 @@
             modules = [
               ./modules/options.nix
               ./modules/editor
+              ./modules/format
               ./modules/keymaps
               ./modules/autocmds.nix
               ./modules/ui.nix
