@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   config.vim = {
     languages = {
       bash = {
@@ -56,22 +56,7 @@
     };
 
     lsp = {
-      mappings = {
-        goToDeclaration = null;
-        goToDefinition = null;
-        goToType = null;
-        listImplementations = null;
-        listReferences = null;
-        nextDiagnostic = "<leader>dn";
-        previousDiagnostic = "<leader>dp";
-      };
-      lspsaga = {
-        enable = true;
-        setupOpts.finder.keys = {
-          quit = ["q" "<Esc>"];
-          toggle_or_open = ["o" "<CR>"];
-        };
-      };
+      lspsaga.enable = true;
     };
   };
 }

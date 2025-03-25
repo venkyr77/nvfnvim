@@ -29,21 +29,11 @@
           };
           group_empty_dirs = true;
           scan_mode = "deep";
-          window.mappings = {
-            "\\" = "close_window";
-          };
         };
       };
     };
 
-    git.gitsigns = {
-      enable = true;
-      mappings = {
-        nextHunk = "<leader>hn";
-        previewHunk = "<leader>hv";
-        previousHunk = "<leader>hp";
-      };
-    };
+    git.gitsigns.enable = true;
 
     extraPlugins."guess-indent.nvim" = {
       package = pkgs.vimPlugins.guess-indent-nvim;

@@ -2,20 +2,6 @@
   config.vim = {
     keymaps = [
       {
-        action = "<cmd>nohlsearch<CR>";
-        desc = "Clear highlights on search when pressing <Esc> in normal mode";
-        key = "<Esc>";
-        mode = "n";
-        silent = true;
-      }
-      {
-        action = ":Neotree toggle<CR>";
-        desc = "[N]eotree [t]oggle";
-        key = "\\";
-        mode = "n";
-        silent = true;
-      }
-      {
         action = ":Lspsaga goto_definition<CR>";
         desc = "[d]efinitions";
         key = "<leader>gd";
@@ -40,5 +26,20 @@
         mode = "n";
       }
     ];
+    lsp = {
+      mappings = {
+        goToDeclaration = null;
+        goToDefinition = null;
+        goToType = null;
+        listImplementations = null;
+        listReferences = null;
+        nextDiagnostic = "<leader>dn";
+        previousDiagnostic = "<leader>dp";
+      };
+      lspsaga.setupOpts.finder.keys = {
+        quit = ["q" "<Esc>"];
+        toggle_or_open = ["o" "<CR>"];
+      };
+    };
   };
 }

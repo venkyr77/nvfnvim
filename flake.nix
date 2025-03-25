@@ -27,7 +27,7 @@
             pkgs = nixpkgs.legacyPackages.${system};
             modules = [
               ./modules/options.nix
-              ./modules/keymaps.nix
+              ./modules/keymaps
               ./modules/editor.nix
               ./modules/ui.nix
               ./modules/lsp.nix
