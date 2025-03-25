@@ -1,7 +1,7 @@
 {
   imports = [
     ./completion.nix
-		./gitsigns.nix
+    ./gitsigns.nix
     ./lsp.nix
     ./neotree.nix
   ];
