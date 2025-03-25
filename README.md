@@ -16,15 +16,20 @@ A simple standalone flake that makes this package as default
 ```nix
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nvfnvim = {
       url = "github:venkyr77/nvfnvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs =
-    { nvfnvim, ... }:
-    let
+
+  outputs = {
+    nvfnvim,
+    flake-parts,
+    ...
+  } @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -32,17 +37,9 @@ A simple standalone flake that makes this package as default
         "aarch64-darwin"
       ];
 
-      packages = builtins.listToAttrs (
-        map (system: {
-          name = system;
-          value = {
-            inherit (nvfnvim.packages.${system}) default;
-          };
-        }) systems
-      );
-    in
-    {
-      inherit packages;
+      perSystem = {system, ...}: {
+        packages = {inherit (nvfnvim.packages.${system}) default;};
+      };
     };
 }
 ```
