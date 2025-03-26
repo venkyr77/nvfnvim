@@ -31,6 +31,7 @@
               ./modules/editor
               ./modules/format
               ./modules/keymaps
+              ./modules/lint
               ./modules/lsp
               ./modules/options
               ./modules/ui

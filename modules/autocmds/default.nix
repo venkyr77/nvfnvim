@@ -19,5 +19,17 @@
       desc = "Disable indentscope for certain filetypes";
       event = ["FileType"];
     }
+    {
+      callback = with pkgs;
+        lib.generators.mkLuaInline
+        # lua
+        ''
+          function()
+            require("lint").try_lint()
+          end
+        '';
+      desc = "Try lint on certain events";
+      event = ["BufEnter" "BufWritePost" "InsertLeave"];
+    }
   ];
 }
