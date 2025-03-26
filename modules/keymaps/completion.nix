@@ -1,6 +1,8 @@
-{lib, ...}: {
+{lib, ...}: let
+  inherit (lib.generators) mkLuaInline;
+in {
   config.vim.autocomplete.nvim-cmp.setupOpts.mapping =
-    lib.generators.mkLuaInline
+    mkLuaInline
     # lua
     ''
       {

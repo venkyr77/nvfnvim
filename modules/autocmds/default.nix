@@ -1,8 +1,10 @@
-{pkgs, ...}: {
+{lib, ...}: let
+  inherit (lib.generators) mkLuaInline;
+in {
   config.vim.autocmds = [
     {
-      callback = with pkgs;
-        lib.generators.mkLuaInline
+      callback =
+        mkLuaInline
         # lua
         ''
           function()
@@ -20,8 +22,8 @@
       event = ["FileType"];
     }
     {
-      callback = with pkgs;
-        lib.generators.mkLuaInline
+      callback =
+        mkLuaInline
         # lua
         ''
           function()

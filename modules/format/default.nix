@@ -1,10 +1,17 @@
-{pkgs, ...}: {
-  config.vim.formatter.conform-nvim = with pkgs; {
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  inherit (lib) getExe;
+  inherit (lib.generators) mkLuaInline;
+in {
+  config.vim.formatter.conform-nvim = {
     enable = true;
     setupOpts = {
-      formatters = let
+      formatters = with pkgs; let
         getDenoFormatterForExt = ext: {
-          command = lib.getExe deno;
+          command = getExe deno;
           args = [
             "fmt"
             "-"
@@ -13,15 +20,15 @@
           ];
         };
       in {
-        alejandra.command = lib.getExe alejandra;
+        alejandra.command = getExe alejandra;
         denofmt_md = getDenoFormatterForExt "md";
-        nixfmt-rfc-style.command = lib.getExe nixfmt-rfc-style;
-        prettierd.command = lib.getExe prettierd;
-        shfmt.command = lib.getExe shfmt;
-        stylua.command = lib.getExe stylua;
+        nixfmt-rfc-style.command = getExe nixfmt-rfc-style;
+        prettierd.command = getExe prettierd;
+        shfmt.command = getExe shfmt;
+        stylua.command = getExe stylua;
       };
-      format_on_save = lib.generators.mkLuaInline "nil";
-      format_after_save = lib.generators.mkLuaInline "nil";
+      format_on_save = mkLuaInline "nil";
+      format_after_save = mkLuaInline "nil";
       formatters_by_ft = {
         java.lsp_format = "prefer";
         lua = ["stylua"];
