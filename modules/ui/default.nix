@@ -1,6 +1,7 @@
 {
   imports = [
     ./bufferline.nix
+    ./dressing.nix
     ./illuminate.nix
     ./noice.nix
   ];
