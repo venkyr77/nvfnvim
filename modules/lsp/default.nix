@@ -1,4 +1,8 @@
 {
+  imports = [
+    ./jdtls.nix
+  ];
+
   config.vim = {
     languages = {
       bash = {
