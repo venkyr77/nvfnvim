@@ -15,29 +15,30 @@ in {
             function()
               local jdtls = require("jdtls")
 
-              local get_root_dir = function()
-                return jdtls.setup.find_root({ "packageInfo" }) or jdtls.setup.find_root({ "mvnw", "gradlew", ".git" })
-              end
+              local root_dir = jdtls.setup.find_root({ "mvnw", "gradlew", ".git" })
 
               jdtls.start_or_attach({
-                capabilities = vim.tbl_deep_extend(
-                  "force",
-                  {},
-                  vim.lsp.protocol.make_client_capabilities(),
-                  require("cmp_nvim_lsp").default_capabilities()
-                ),
+                capabilities = capabilities,
                 cmd = {
                   "${lib.getExe pkgs.jdt-language-server}",
                   "--jvm-arg=-javaagent:${pkgs.lombok}/share/java/lombok.jar",
                   "-configuration",
                   vim.fn.stdpath("cache") .. "/jdtls/config",
                   "-data",
-                  vim.fn.stdpath("cache") .. "/jdtls/workspace/" .. vim.fn.fnamemodify(get_root_dir(), ":p:h:t"),
+                  vim.fn.stdpath("cache") .. "/jdtls/workspace/" .. vim.fn.fnamemodify(root_dir, ":p:h:t"),
                 },
                 on_attach = function(_, bufnr)
                   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                 end,
-                root_dir = get_root_dir(),
+                init_options = {
+                  extendedClientCapabilities = vim.tbl_extend(
+                    "force",
+                    {},
+                    jdtls.extendedClientCapabilities,
+                    { resolveAdditionalTextEditsSupport = true }
+                  ),
+                },
+                root_dir = root_dir,
                 settings = {
                   java = {
                     completion = { enabled = true },
@@ -63,7 +64,7 @@ in {
                       },
                     },
                     contentProvider = { preferred = "fernflower" },
-                    eclipse = { downloadsources = true },
+                    eclipse = { downloadSources = true },
                     inlayHints = { parameterNames = { enabled = "all" } },
                     signatureHelp = { enabled = true },
                     sources = {
@@ -81,15 +82,6 @@ in {
         event = ["FileType"];
         pattern = ["java"];
       }
-    ];
-
-    extraPackages = with pkgs; [
-      jdt-language-server
-      lombok
-      jdk8
-      jdk11
-      jdk17
-      jdk21
     ];
 
     extraPlugins."jdtls" = {
