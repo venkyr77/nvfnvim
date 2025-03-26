@@ -25,17 +25,7 @@
         packages.default =
           (nvf.lib.neovimConfiguration {
             pkgs = nixpkgs.legacyPackages.${system};
-            modules = [
-              ./modules/autocmds
-              ./modules/completion
-              ./modules/editor
-              ./modules/format
-              ./modules/keymaps
-              ./modules/lint
-              ./modules/lsp
-              ./modules/options
-              ./modules/ui
-            ];
+            modules = [./modules];
           })
           .neovim;
       };
