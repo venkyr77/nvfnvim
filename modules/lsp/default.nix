@@ -4,25 +4,19 @@
       bash = {
         enable = true;
         lsp.enable = true;
-        treesitter.enable = true;
       };
 
-      html = {
-        enable = true;
-        treesitter.enable = true;
-      };
+      html.enable = true;
 
       lua = {
         enable = true;
         lsp.enable = true;
-        treesitter.enable = true;
       };
 
       markdown = {
         enable = true;
         extensions.render-markdown-nvim.enable = true;
         lsp.enable = true;
-        treesitter.enable = true;
       };
 
       nix = {
@@ -31,20 +25,17 @@
           enable = true;
           server = "nixd";
         };
-        treesitter.enable = true;
       };
 
       terraform = {
         enable = true;
         lsp.enable = true;
-        treesitter.enable = true;
       };
 
       ts = {
         enable = true;
         extensions.ts-error-translator.enable = true;
         lsp.enable = true;
-        treesitter.enable = true;
       };
     };
 
