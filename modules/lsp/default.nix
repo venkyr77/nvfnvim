@@ -1,7 +1,6 @@
 {
   imports = [
     ./jdtls.nix
-    ./sonarlint-ls.nix
   ];
 
   config.vim = {
