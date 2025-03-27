@@ -4,8 +4,33 @@
   ...
 }: let
   inherit (lib.generators) mkLuaInline;
-  java_debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug";
-  java_test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test";
+  inherit (lib.strings) hasSuffix;
+  inherit (lib.nvim.lua) toLuaObject;
+
+  vscode-java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug";
+  vscode-java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test";
+  vscode-java-decompiler = pkgs.fetchFromGitHub {
+    owner = "dgileadi";
+    repo = "vscode-java-decompiler";
+    rev = "master";
+    sha256 = "sha256-VoCxa5zwkLP1eIpZTHaVpbnHbwDTpJztrpQ9Ll3KY/o=";
+  };
+
+  getJars = plugin:
+    map
+    (jar: "${plugin}/${jar}")
+    (builtins.attrNames (builtins.readDir "${plugin}/server"));
+
+  bundles = toLuaObject (
+    builtins.filter
+    # https://github.com/mfussenegger/nvim-jdtls/issues/746
+    (jar: !(hasSuffix "com.microsoft.java.test.runner-jar-with-dependencies.jar" jar || hasSuffix "jacocoagent.jar" jar))
+    (builtins.concatLists [
+      (getJars vscode-java-debug)
+      (getJars vscode-java-test)
+      (getJars vscode-java-decompiler)
+    ])
+  );
 in {
   config.vim = {
     autocmds = [
@@ -49,37 +74,15 @@ in {
                 end, { buffer = bufnr, desc = "[T]est nearest [M]ethod" })
               end
 
-              local get_init_options = function()
-                local bundles = vim.split(vim.fn.glob("${java_debug}/server/com.microsoft.java.debug.plugin-*.jar"), "\n")
-
-                vim.list_extend(bundles, vim.split(vim.fn.glob("${java_test}/server/*.jar"), "\n"))
-
-                -- https://github.com/mfussenegger/nvim-jdtls/issues/746
-
-                local ignored_bundles = { "com.microsoft.java.test.runner-jar-with-dependencies.jar", "jacocoagent.jar" }
-
-                local function should_ignore_bundle(bundle)
-                  for _, ignored in ipairs(ignored_bundles) do
-                    if string.find(bundle, ignored, 1, true) then
-                      return true
-                    end
-                  end
-                end
-
-                bundles = vim.tbl_filter(function(bundle)
-                  return bundle ~= "" and not should_ignore_bundle(bundle)
-                end, bundles)
-
-                return {
-                  bundles = bundles,
-                  extendedClientCapabilities = vim.tbl_extend(
-                    "force",
-                    {},
-                    jdtls.extendedClientCapabilities,
-                    { resolveAdditionalTextEditsSupport = true }
-                  ),
-                }
-              end
+              local init_options = {
+                bundles = ${bundles},
+                extendedClientCapabilities = vim.tbl_extend(
+                  "force",
+                  {},
+                  jdtls.extendedClientCapabilities,
+                  { resolveAdditionalTextEditsSupport = true }
+                ),
+              }
 
               local settings = {
                 java = {
@@ -122,7 +125,7 @@ in {
                 capabilities = capabilities,
                 cmd = cmd,
                 on_attach = on_attach,
-                init_options = get_init_options(),
+                init_options = init_options,
                 root_dir = root_dir,
                 settings = settings,
               })
