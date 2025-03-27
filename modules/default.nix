@@ -2,6 +2,7 @@
   imports = [
     ./autocmds
     ./completion
+    ./debug
     ./editor
     ./format
     ./keymaps
