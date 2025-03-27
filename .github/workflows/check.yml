@@ -9,6 +9,19 @@ on:
       - main
 
 jobs:
+  nix-flake-check:
+    name: "Validate flake"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Check if the Flake can build
+        run: nix flake check --all-systems
+
   check-format-with-alejandra:
     name: "Check formatting"
     runs-on: ubuntu-latest
