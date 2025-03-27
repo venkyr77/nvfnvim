@@ -20,7 +20,10 @@ A simple standalone flake that makes this package as default
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nvfnvim = {
       url = "github:venkyr77/nvfnvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
   };
 
