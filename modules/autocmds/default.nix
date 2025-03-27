@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib.generators) mkLuaInline;
+    inherit (lib.generators) mkLuaInline;
 in {
   config.vim.autocmds = [
     {
