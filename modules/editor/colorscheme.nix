@@ -5,6 +5,7 @@ in {
     theme = {
       enable = true;
       name = "catppuccin";
+      style = "mocha";
     };
 
     lsp.lspsaga.setupOpts.ui.kind =
