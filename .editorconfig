@@ -4,6 +4,6 @@ root = true
 indent_style = space
 indent_size = 4
 
-[*.nix]
+[*.{nix,lua}]
 indent_style = space
 indent_size = 2
