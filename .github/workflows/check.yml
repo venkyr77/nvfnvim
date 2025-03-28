@@ -22,7 +22,7 @@ jobs:
       - name: Check if the Flake can build
         run: nix flake check --all-systems
 
-  check-format-with-alejandra:
+  check-format:
     name: "Check formatting"
     runs-on: ubuntu-latest
     steps:
@@ -32,5 +32,7 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
 
-      - name: Check formatting via Alejandra
-        run: nix run nixpkgs#alejandra -- -c .
+      - name: Check formatting via alejandra(for nix) and stylua(lua)
+        run: |
+          nix-shell -p alejandra -p stylua --run \
+            'alejandra -c . && stylua --no-editorconfig --indent-width 2 --indent-type Spaces --quote-style ForceSingle --check .'
