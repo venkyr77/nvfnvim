@@ -3,7 +3,7 @@
 in {
   config.vim = {
     extraLuaFiles = [
-      ./config.lua
+      (builtins.path {path = ./config.lua;})
     ];
 
     autocmds = [
