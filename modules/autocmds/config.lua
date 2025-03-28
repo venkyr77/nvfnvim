@@ -2,7 +2,7 @@ local M = {}
 
 M.indentscope_disable_callback = function()
   local ignore_filetypes = {
-    'help',
+    "help",
     'neo-tree',
     'notify',
   }
