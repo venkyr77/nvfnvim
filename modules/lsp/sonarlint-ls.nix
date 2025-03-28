@@ -3,6 +3,7 @@
     extraPackages = [pkgs.sonarlint-ls];
 
     extraPlugins.sonarlint-ls = {
+      # https://gitlab.com/schrieveslaach/sonarlint.nvim/-/issues/2
       after = ["lsp-setup"];
 
       package = pkgs.vimUtils.buildVimPlugin {
