@@ -25,18 +25,7 @@ in {
         nixfmt-rfc-style.command = getExe nixfmt-rfc-style;
         prettierd.command = getExe prettierd;
         shfmt.command = getExe shfmt;
-        stylua = {
-          command = getExe stylua;
-          append_args = [
-            "--indent-type"
-            "Spaces"
-            "--indent-width"
-            "2"
-            "--quote-style"
-            "ForceSingle"
-            "--sort-requires"
-          ];
-        };
+        stylua.command = getExe stylua;
       };
       format_on_save = mkLuaInline "nil";
       format_after_save = mkLuaInline "nil";

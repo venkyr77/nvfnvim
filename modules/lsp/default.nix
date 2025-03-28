@@ -14,10 +14,7 @@
 
       lua = {
         enable = true;
-        lsp = {
-          enable = true;
-          lazydev.enable = true;
-        };
+        lsp.enable = true;
       };
 
       markdown = {
