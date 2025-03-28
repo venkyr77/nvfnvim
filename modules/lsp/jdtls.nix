@@ -9,12 +9,6 @@
 
   vscode-java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug";
   vscode-java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test";
-  vscode-java-decompiler = pkgs.fetchFromGitHub {
-    owner = "dgileadi";
-    repo = "vscode-java-decompiler";
-    rev = "master";
-    sha256 = "sha256-VoCxa5zwkLP1eIpZTHaVpbnHbwDTpJztrpQ9Ll3KY/o=";
-  };
 
   getJars = plugin:
     map
@@ -28,7 +22,6 @@
     (builtins.concatLists [
       (getJars vscode-java-debug)
       (getJars vscode-java-test)
-      (getJars vscode-java-decompiler)
     ])
   );
 in {
