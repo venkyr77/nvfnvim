@@ -32,6 +32,8 @@ in {
             "Spaces"
             "--indent-width"
             "2"
+            "--quote-style"
+            "ForceSingle"
             "--sort-requires"
           ];
         };
