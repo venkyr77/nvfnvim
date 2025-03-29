@@ -50,7 +50,6 @@
         enable = true;
         setupOpts.finder.methods.tyd = "textDocument/typeDefinition";
       };
-      null-ls.enable = false;
     };
   };
 }
