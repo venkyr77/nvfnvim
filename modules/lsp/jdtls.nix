@@ -54,17 +54,17 @@ in {
                   shortenCommandLine = "argfile",
                 }
 
-                vim.keymap.set("n", "<leader>jtc", function()
+                vim.keymap.set("n", "<leader>ltc", function()
                   jdtls.test_class({
                     config_overrides = overrides,
                   })
-                end, { buffer = bufnr, desc = "[T]est [C]lass" })
+                end, { buffer = bufnr, desc = "[t]est [c]lass" })
 
-                vim.keymap.set("n", "<leader>jtm", function()
+                vim.keymap.set("n", "<leader>ltm", function()
                   jdtls.test_nearest_method({
                     config_overrides = overrides,
                   })
-                end, { buffer = bufnr, desc = "[T]est nearest [M]ethod" })
+                end, { buffer = bufnr, desc = "[t]est nearest [m]ethod" })
               end
 
               local init_options = {

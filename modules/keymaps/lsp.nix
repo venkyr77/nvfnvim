@@ -1,41 +1,52 @@
-{
+{lib, ...}: let
+  inherit (lib.generators) mkLuaInline;
+  inherit (import ../../helpers) mkActionBindingToBuffer mkFnBindingToBuffer;
+in {
   config.vim = {
-    keymaps = [
+    autocmds = [
       {
-        action = ":Lspsaga goto_definition<CR>";
-        desc = "[d]efinitions";
-        key = "<leader>gd";
-        mode = "n";
-      }
-      {
-        action = ":Lspsaga finder imp<CR>";
-        desc = "[i]mplementations";
-        key = "<leader>gi";
-        mode = "n";
-      }
-      {
-        action = ":Lspsaga finder ref<CR>";
-        desc = "[r]eferences";
-        key = "<leader>gr";
-        mode = "n";
-      }
-      {
-        action = ":Lspsaga finder tyd<CR>";
-        desc = "[t]ype definitions";
-        key = "<leader>gt";
-        mode = "n";
+        callback =
+          mkLuaInline
+          # lua
+          ''
+            function(event)
+              ${mkActionBindingToBuffer "<leader>gd" ":Lspsaga goto_definition<CR>" "[d]efinition / declaration"}
+              ${mkActionBindingToBuffer "<leader>gi" ":Lspsaga finder imp<CR>" "[i]mplementations"}
+              ${mkActionBindingToBuffer "<leader>gr" ":Lspsaga finder ref<CR>" "[r]eferences"}
+              ${mkActionBindingToBuffer "<leader>gt" ":Lspsaga finder tyd<CR>" "[t]ype definitions"}
+              ${mkFnBindingToBuffer "<leader>la" "vim.lsp.buf.code_action" "code [a]ction"}
+              ${mkFnBindingToBuffer "<leader>ldc" "vim.diagnostic.open_float" "[c]urrent(open float)"}
+              ${mkFnBindingToBuffer "<leader>ldn" "vim.diagnostic.goto_next" "[n]ext"}
+              ${mkFnBindingToBuffer "<leader>ldp" "vim.diagnostic.goto_prev" "[p]rev"}
+              ${mkFnBindingToBuffer "<leader>lh" "vim.lsp.buf.hover" "[h]over doc"}
+              ${mkFnBindingToBuffer "<leader>lr" "vim.lsp.buf.rename" "[r]ename"}
+            end
+          '';
+        desc = "LSP on attach set keymaps autocmd";
+        event = ["LspAttach"];
       }
     ];
     lsp = {
       mappings = {
+        addWorkspaceFolder = null;
+        codeAction = null;
+        documentHighlight = null;
         format = null;
         goToDeclaration = null;
         goToDefinition = null;
         goToType = null;
+        hover = null;
+        listDocumentSymbols = null;
         listImplementations = null;
         listReferences = null;
-        nextDiagnostic = "<leader>dn";
-        previousDiagnostic = "<leader>dp";
+        listWorkspaceFolders = null;
+        listWorkspaceSymbols = null;
+        nextDiagnostic = null;
+        openDiagnosticFloat = null;
+        previousDiagnostic = null;
+        removeWorkspaceFolder = null;
+        signatureHelp = null;
+        renameSymbol = null;
         toggleFormatOnSave = null;
       };
       lspsaga.setupOpts.finder.keys = {

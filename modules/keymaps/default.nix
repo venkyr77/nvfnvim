@@ -11,10 +11,14 @@
     binds.whichKey = {
       enable = true;
       register = {
-        "<leader>c" = "conform (format)";
-        "<leader>d" = "+[D]iagnostics";
-        "<leader>g" = "+[G]o to(LSP)";
-        "<leader>h" = "[H]unk(Gitsigns)";
+        "<leader>c" = "+[c]onform(format)";
+        "<leader>d" = "+[d]ap";
+        "<leader>f" = "+[f]ind(telescope)";
+        "<leader>g" = "+[g]o to(lsp)";
+        "<leader>h" = "+[h]unk(gitsigns)";
+        "<leader>l" = "+[l]sp";
+        "<leader>ld" = "+[d]iagnostics";
+        "<leader>t" = "+[t]oggle";
       };
     };
 
