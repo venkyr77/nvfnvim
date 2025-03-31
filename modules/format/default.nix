@@ -4,7 +4,6 @@
   ...
 }: let
   inherit (lib) getExe;
-  inherit (lib.generators) mkLuaInline;
 in {
   config.vim = {
     formatter.conform-nvim = {
@@ -13,8 +12,8 @@ in {
         formatters = with pkgs; {
           stylua.command = getExe stylua;
         };
-        format_on_save = mkLuaInline "nil";
-        format_after_save = mkLuaInline "nil";
+        format_on_save = null;
+        format_after_save = null;
         formatters_by_ft = {
           lua = ["stylua"];
           zsh = ["shfmt"];
