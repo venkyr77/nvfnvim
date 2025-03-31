@@ -45,6 +45,7 @@
     };
 
     lsp = {
+      formatOnSave = false;
       lspkind.enable = true;
       lspsaga = {
         enable = true;
