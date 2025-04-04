@@ -1,7 +1,6 @@
 {
   imports = [
     ./dressing.nix
-    ./illuminate.nix
     ./noice.nix
   ];
 
@@ -11,7 +10,10 @@
     notify.nvim-notify.enable = true;
     statusline.lualine.enable = true;
     tabline.nvimBufferline.enable = true;
-    ui.borders.enable = true;
+    ui = {
+      borders.enable = true;
+      illuminate.enable = true;
+    };
     visuals = {
       indent-blankline.enable = true;
       rainbow-delimiters.enable = true;
