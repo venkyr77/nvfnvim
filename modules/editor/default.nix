@@ -1,7 +1,6 @@
 {
   imports = [
     ./auto-save.nix
-    ./colorscheme.nix
     ./fzf-lua.nix
     ./guess-indent.nix
     ./neo-tree.nix
@@ -14,5 +13,10 @@
     autopairs.nvim-autopairs.enable = true;
     git.gitsigns.enable = true;
     snippets.luasnip.enable = true;
+    theme = {
+      enable = true;
+      name = "catppuccin";
+      style = "mocha";
+    };
   };
 }
