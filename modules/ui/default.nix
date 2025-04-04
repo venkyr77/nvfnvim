@@ -1,6 +1,5 @@
 {
   imports = [
-    ./bufferline.nix
     ./dressing.nix
     ./illuminate.nix
     ./noice.nix
@@ -11,6 +10,7 @@
     notes.todo-comments.enable = true;
     notify.nvim-notify.enable = true;
     statusline.lualine.enable = true;
+    tabline.nvimBufferline.enable = true;
     ui.borders.enable = true;
     visuals = {
       indent-blankline.enable = true;
