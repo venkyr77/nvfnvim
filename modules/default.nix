@@ -1,12 +1,11 @@
 {
   imports = [
-    ./autocmds
     ./completion
     ./debug
+    ./diagnostics
     ./editor
     ./format
     ./keymaps
-    ./lint
     ./lsp
     ./options
     ./ui

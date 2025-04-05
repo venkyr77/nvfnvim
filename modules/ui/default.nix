@@ -3,9 +3,7 @@
     lazy.plugins."dressing-nvim" = {
       package = "dressing-nvim";
       setupModule = "dressing";
-      setupOpts = {
-        select.backend = "fzf_lua";
-      };
+      setupOpts.select.backend = "fzf_lua";
     };
     mini.indentscope.enable = true;
     notes.todo-comments.enable = true;
