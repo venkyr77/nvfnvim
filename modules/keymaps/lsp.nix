@@ -15,9 +15,22 @@ in {
               ${mkActionBindingToBuffer "<leader>gr" ":Lspsaga finder ref<CR>" "[r]eferences"}
               ${mkActionBindingToBuffer "<leader>gt" ":Lspsaga finder tyd<CR>" "[t]ype definitions"}
               ${mkFnBindingToBuffer "<leader>la" "vim.lsp.buf.code_action" "code [a]ction"}
-              ${mkFnBindingToBuffer "<leader>ldc" "vim.diagnostic.open_float" "[c]urrent(open float)"}
-              ${mkFnBindingToBuffer "<leader>ldn" "vim.diagnostic.goto_next" "[n]ext"}
-              ${mkFnBindingToBuffer "<leader>ldp" "vim.diagnostic.goto_prev" "[p]rev"}
+              ${mkFnBindingToBuffer "<leader>ldn"
+              # lua
+              ''
+                function()
+                  vim.diagnostic.jump({ count = 1, float = false })
+                end
+              ''
+              "[n]ext"}
+              ${mkFnBindingToBuffer "<leader>ldp"
+              # lua
+              ''
+                function()
+                  vim.diagnostic.jump({ count = -1, float = false })
+                end
+              ''
+              "[p]rev"}
               ${mkFnBindingToBuffer "<leader>lh" "vim.lsp.buf.hover" "[h]over doc"}
               ${mkFnBindingToBuffer "<leader>lr" "vim.lsp.buf.rename" "[r]ename"}
             end
