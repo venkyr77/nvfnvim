@@ -46,6 +46,7 @@
 
     lsp = {
       formatOnSave = false;
+      inlayHints.enable = true;
       lspkind.enable = true;
       lspsaga = {
         enable = true;
