@@ -8,7 +8,10 @@
     mini.indentscope.enable = true;
     notes.todo-comments.enable = true;
     notify.nvim-notify.enable = true;
-    statusline.lualine.enable = true;
+    statusline.lualine = {
+      enable = true;
+      setupOpts.extensions = ["neo-tree"];
+    };
     tabline.nvimBufferline.enable = true;
     ui = {
       borders.enable = true;
