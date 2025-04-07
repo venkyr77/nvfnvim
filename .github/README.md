@@ -91,7 +91,6 @@ also see,
 | [dressing.nvim](https://github.com/stevearc/dressing.nvim)                      | For overriding `vim.ui.select` and `vim.ui.input` with `fzf-lua`             |
 | [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) | Indent guide                                                                 |
 | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)                    | Statusline                                                                   |
-| [mini.indentscope](https://github.com/echasnovski/mini.indentscope)             | Indent guide                                                                 |
 | [noice.nvim](https://github.com/folke/noice.nvim)                               | Replaces the UI for messages, cmdline, and popup menu                        |
 | [nvim-notify](https://github.com/rcarriga/nvim-notify)                          | Notification manager                                                         |
 | [rainbow-delimiters.nvim](https://github.com/HiPhish/rainbow-delimiters.nvim)   | Rainbow parantheses using Tree-sitter                                        |
