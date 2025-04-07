@@ -36,7 +36,6 @@ in {
     };
 
     languages = {
-      bash.extraDiagnostics.enable = true;
       lua.extraDiagnostics.enable = true;
       markdown.extraDiagnostics.enable = true;
       nix.extraDiagnostics.enable = true;
