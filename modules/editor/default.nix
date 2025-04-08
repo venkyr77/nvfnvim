@@ -26,9 +26,16 @@
         notifier.enabled = true;
         picker = {
           enabled = true;
-          layout.fullscreen = true;
-          sources.explorer = {
-            layout.fullscreen = false;
+          sources = {
+            explorer = {
+              hidden = true;
+            };
+            files = {
+              layout.fullscreen = true;
+            };
+            grep = {
+              layout.fullscreen = true;
+            };
           };
           ui_select = true;
         };
