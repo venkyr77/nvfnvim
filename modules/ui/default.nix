@@ -1,10 +1,5 @@
 {
   config.vim = {
-    lazy.plugins."dressing-nvim" = {
-      package = "dressing-nvim";
-      setupModule = "dressing";
-      setupOpts.select.backend = "fzf_lua";
-    };
     notes.todo-comments.enable = true;
     notify.nvim-notify.enable = true;
     statusline.lualine = {
