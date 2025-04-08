@@ -1,6 +1,6 @@
 {lib, ...}: let
   inherit (lib.generators) mkLuaInline;
-  inherit (import ../../helpers) mkActionBindingToBuffer mkFnBindingToBuffer;
+  inherit (import ../../helpers) mkFnBindingToBuffer;
 in {
   config.vim = {
     autocmds = [
@@ -10,25 +10,47 @@ in {
           # lua
           ''
             function(event)
-              ${mkActionBindingToBuffer "<leader>gd" ":Lspsaga goto_definition<CR>" "[d]efinition / declaration"}
-              ${mkActionBindingToBuffer "<leader>gi" ":Lspsaga finder imp<CR>" "[i]mplementations"}
-              ${mkActionBindingToBuffer "<leader>gr" ":Lspsaga finder ref<CR>" "[r]eferences"}
-              ${mkActionBindingToBuffer "<leader>gt" ":Lspsaga finder tyd<CR>" "[t]ype definitions"}
+              ${mkFnBindingToBuffer "<leader>gd"
+              # lua
+              ''
+                function() Snacks.picker.lsp_definitions() end
+              ''
+              "[d]efinitions"}
+              ${mkFnBindingToBuffer "<leader>gD"
+              # lua
+              ''
+                function() Snacks.picker.lsp_declarations() end
+              ''
+              "[d]eclarations"}
+              ${mkFnBindingToBuffer "<leader>gi"
+              # lua
+              ''
+                function() Snacks.picker.lsp_implementations() end
+              ''
+              "[i]mplementations"}
+              ${mkFnBindingToBuffer "<leader>gr"
+              # lua
+              ''
+                function() Snacks.picker.lsp_references() end
+              ''
+              "[r]eferences"}
+              ${mkFnBindingToBuffer "<leader>gt"
+              # lua
+              ''
+                function() Snacks.picker.lsp_type_definitions() end
+              ''
+              "[t]ype definitions"}
               ${mkFnBindingToBuffer "<leader>la" "vim.lsp.buf.code_action" "code [a]ction"}
               ${mkFnBindingToBuffer "<leader>ldn"
               # lua
               ''
-                function()
-                  vim.diagnostic.jump({ count = 1, float = false })
-                end
+                function() vim.diagnostic.jump({ count = 1, float = false }) end
               ''
               "[n]ext"}
               ${mkFnBindingToBuffer "<leader>ldp"
               # lua
               ''
-                function()
-                  vim.diagnostic.jump({ count = -1, float = false })
-                end
+                function() vim.diagnostic.jump({ count = -1, float = false }) end
               ''
               "[p]rev"}
               ${mkFnBindingToBuffer "<leader>lh" "vim.lsp.buf.hover" "[h]over doc"}
