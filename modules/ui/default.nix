@@ -1,7 +1,6 @@
 {
   config.vim = {
     notes.todo-comments.enable = true;
-    notify.nvim-notify.enable = true;
     statusline.lualine = {
       enable = true;
       setupOpts.extensions = ["neo-tree"];
