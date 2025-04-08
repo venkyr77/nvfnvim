@@ -28,6 +28,7 @@
           enabled = true;
           ui_select = true;
         };
+        words.enabled = true;
       };
     };
   };

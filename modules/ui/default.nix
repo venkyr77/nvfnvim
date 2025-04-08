@@ -9,7 +9,6 @@
     tabline.nvimBufferline.enable = true;
     ui = {
       borders.enable = true;
-      illuminate.enable = true;
       noice = {
         enable = true;
         setupOpts.lsp.override."cmp.entry.get_documentation" = true;
