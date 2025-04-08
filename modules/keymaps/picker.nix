@@ -2,6 +2,21 @@
   config.vim = {
     extraPackages = [pkgs.ripgrep];
     keymaps = [
+      # Explorer
+      {
+        action =
+          #lua
+          ''
+            function() Snacks.explorer() end
+          '';
+        desc = "[t]oggle [e]xplorer";
+        key = "\\";
+        lua = true;
+        mode = "n";
+        silent = true;
+      }
+
+      # Find
       {
         action =
           #lua

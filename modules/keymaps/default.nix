@@ -4,7 +4,6 @@
     ./conform.nix
     ./gitsigns.nix
     ./lsp.nix
-    ./neotree.nix
     ./picker.nix
   ];
 
