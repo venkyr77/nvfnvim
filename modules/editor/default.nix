@@ -20,6 +20,10 @@
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
+        indent = {
+          enable = true;
+          scope.enabled = false;
+        };
         picker = {
           enabled = true;
           ui_select = true;
