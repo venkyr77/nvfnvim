@@ -5,6 +5,7 @@
     ./gitsigns.nix
     ./lsp.nix
     ./neotree.nix
+    ./picker.nix
   ];
 
   config.vim = {
@@ -13,7 +14,7 @@
       register = {
         "<leader>c" = "+[c]onform(format)";
         "<leader>d" = "+[d]ap";
-        "<leader>f" = "+[f]ind(telescope)";
+        "<leader>f" = "+[f]ind(snacks)";
         "<leader>g" = "+[g]o to(lsp)";
         "<leader>h" = "+[h]unk(gitsigns)";
         "<leader>l" = "+[l]sp";

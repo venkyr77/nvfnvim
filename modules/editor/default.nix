@@ -4,7 +4,6 @@
     ./guess-indent.nix
     ./neo-tree.nix
     ./smartyank.nix
-    ./telescope.nix
     ./treesitter.nix
   ];
 
@@ -27,6 +26,7 @@
         notifier.enabled = true;
         picker = {
           enabled = true;
+          layout.fullscreen = true;
           ui_select = true;
         };
         words.enabled = true;
