@@ -19,14 +19,17 @@ in {
 
     diagnostics = {
       enable = true;
-      config.virtual_text.format =
-        mkLuaInline
-        # lua
-        ''
-          function(diagnostic)
-            return string.format("%s (%s)", diagnostic.message, diagnostic.source)
-          end
-        '';
+      config = {
+        virtual_lines.format =
+          mkLuaInline
+          # lua
+          ''
+            function(diagnostic)
+              return string.format("%s (%s)", diagnostic.message, diagnostic.source)
+            end
+          '';
+        underline = false;
+      };
       nvim-lint = {
         enable = true;
         linters_by_ft = {
