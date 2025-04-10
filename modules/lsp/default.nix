@@ -1,12 +1,19 @@
-{
+{pkgs, ...}: {
   imports = [
     ./jdtls.nix
     ./sonarlint-ls.nix
   ];
 
   config.vim = {
+    extraPackages = [pkgs.go];
+
     languages = {
       bash = {
+        enable = true;
+        lsp.enable = true;
+      };
+
+      go = {
         enable = true;
         lsp.enable = true;
       };

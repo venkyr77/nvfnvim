@@ -12,6 +12,7 @@
     };
     languages = {
       bash.format.enable = true;
+      go.format.enable = true;
       lua.format.enable = true;
       markdown.format.enable = true;
       nix.format.enable = true;

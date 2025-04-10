@@ -9,6 +9,9 @@ in {
         enable = true;
       };
     };
+    languages = {
+      go.dap.enable = true;
+    };
     pluginRC.nvim-dap-ui =
       entryAfter ["nvim-dap"]
       # lua
