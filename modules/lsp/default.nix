@@ -48,10 +48,6 @@
       formatOnSave = false;
       inlayHints.enable = true;
       lspkind.enable = true;
-      lspsaga = {
-        enable = true;
-        setupOpts.finder.methods.tyd = "textDocument/typeDefinition";
-      };
     };
   };
 }

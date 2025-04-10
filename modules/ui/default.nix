@@ -1,27 +1,44 @@
-{
+{lib, ...}: let
+  inherit (lib.generators) mkLuaInline;
+in {
   config.vim = {
-    lazy.plugins."dressing-nvim" = {
-      package = "dressing-nvim";
-      setupModule = "dressing";
-      setupOpts.select.backend = "fzf_lua";
-    };
     notes.todo-comments.enable = true;
-    notify.nvim-notify.enable = true;
     statusline.lualine = {
       enable = true;
-      setupOpts.extensions = ["neo-tree"];
+      setupOpts.extensions = [
+        {
+          sections = {
+            lualine_a = mkLuaInline ''
+              {
+                function()
+                  return vim.fn.fnamemodify(vim.fn.getcwd(), ":~")
+                end,
+              }
+            '';
+          };
+          filetypes = ["snacks_picker_list" "snacks_picker_input"];
+        }
+      ];
     };
-    tabline.nvimBufferline.enable = true;
+    tabline.nvimBufferline = {
+      enable = true;
+      setupOpts.options.offsets = [
+        {
+          filetype = "snacks_layout_box";
+          text = "File Explorer";
+          highlight = "Directory";
+          separator = true;
+        }
+      ];
+    };
     ui = {
       borders.enable = true;
-      illuminate.enable = true;
       noice = {
         enable = true;
         setupOpts.lsp.override."cmp.entry.get_documentation" = true;
       };
     };
     visuals = {
-      indent-blankline.enable = true;
       rainbow-delimiters.enable = true;
     };
   };
