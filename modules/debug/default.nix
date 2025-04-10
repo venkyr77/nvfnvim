@@ -14,14 +14,11 @@ in {
       # lua
       ''
         dap.listeners.after.event_initialized["dapui_config"] = function()
-          require("neo-tree").close_all()
+          local explorer = Snacks.picker.get({ source = "explorer" })[1]
+          if explorer ~= nil then
+            explorer:close()
+          end
           require("dapui").open()
-        end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-          require("dapui").close()
-        end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-          require("dapui").close()
         end
       '';
   };
