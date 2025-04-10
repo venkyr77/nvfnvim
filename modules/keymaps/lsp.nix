@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   inherit (lib.generators) mkLuaInline;
   inherit (import ../../helpers) mkFnBindingToBuffer;
 in {
@@ -10,6 +14,8 @@ in {
           # lua
           ''
             function(event)
+              local bufnr = event.buf
+
               ${mkFnBindingToBuffer "<leader>gd"
               # lua
               ''
@@ -61,33 +67,6 @@ in {
         event = ["LspAttach"];
       }
     ];
-    lsp = {
-      mappings = {
-        addWorkspaceFolder = null;
-        codeAction = null;
-        documentHighlight = null;
-        format = null;
-        goToDeclaration = null;
-        goToDefinition = null;
-        goToType = null;
-        hover = null;
-        listDocumentSymbols = null;
-        listImplementations = null;
-        listReferences = null;
-        listWorkspaceFolders = null;
-        listWorkspaceSymbols = null;
-        nextDiagnostic = null;
-        openDiagnosticFloat = null;
-        previousDiagnostic = null;
-        removeWorkspaceFolder = null;
-        signatureHelp = null;
-        renameSymbol = null;
-        toggleFormatOnSave = null;
-      };
-      lspsaga.setupOpts.finder.keys = {
-        quit = ["q" "<Esc>"];
-        toggle_or_open = ["o" "<CR>"];
-      };
-    };
+    lsp.mappings = builtins.mapAttrs (_: _: null) config.vim.lsp.mappings;
   };
 }
