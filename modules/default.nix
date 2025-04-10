@@ -8,6 +8,5 @@
     ./keymaps
     ./lsp
     ./options
-    ./ui
   ];
 }
