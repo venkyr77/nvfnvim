@@ -93,7 +93,6 @@ in {
               end
 
               local init_options = {
-                bundles = ${bundles},
                 extendedClientCapabilities = vim.tbl_extend(
                   "force",
                   {},
