@@ -9,11 +9,18 @@
   inherit (import ../../helpers) mkFnBindingToBuffer;
 
   vscode-java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug";
-  vscode-java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test";
+  vscode-java-test = "${pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "vscode-java-test";
+      publisher = "vscjava";
+      version = "0.43.0";
+      sha256 = "sha256-EM0S1Y4cRMBCRbAZgl9m6fIhANPrvdGVZXOLlDLnVWo=";
+    };
+  }}/share/vscode/extensions/vscjava.vscode-java-test";
 
   getJars = plugin:
     map
-    (jar: "${plugin}/${jar}")
+    (jar: "${plugin}/server/${jar}")
     (builtins.attrNames (builtins.readDir "${plugin}/server"));
 
   bundles = toLuaObject (
