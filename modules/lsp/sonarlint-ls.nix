@@ -12,7 +12,7 @@
       owner = "schrieveslaach";
       repo = "sonarlint.nvim";
       rev = "main";
-      hash = "sha256-x/Z3+lF8+TaLkWOKEOdy04h9emXzP1JgX3t0EhzC4bo=";
+      hash = "sha256-EOAdSvugcDEDuBuFv/HL35HXWvB/V97UtOJqdRuU7ak=";
     };
   };
 
